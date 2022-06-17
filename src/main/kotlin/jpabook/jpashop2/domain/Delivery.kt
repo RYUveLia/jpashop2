@@ -5,7 +5,7 @@ import org.jetbrains.exposed.dao.IntEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.dao.id.IntIdTable
 
-object Deliveries: IntIdTable(){
+object DeliveryTable: IntIdTable(){
     val status = enumeration<DeliveryStatus>("status")
 }
 
@@ -15,6 +15,6 @@ enum class DeliveryStatus (var status: Int) {
 }
 
 class Delivery(id: EntityID<Int>): IntEntity(id) {
-    companion object: IntEntityClass<Delivery>(Deliveries)
-    var status by Deliveries.status
+    companion object: IntEntityClass<Delivery>(DeliveryTable)
+    var status by DeliveryTable.status
 }
